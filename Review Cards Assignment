@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Flashcards</h1>
+    <div class="flashcard" onmouseover="showAnswer(this)" onmouseout="hideAnswer(this)">
+        <div class="question">Question 1: What is HTML?</div>
+        <div class="answer">HTML stands for Hyper Text Markup Language.</div>
+    </div>
+    <div class="flashcard" onmouseover="showAnswer(this)" onmouseout="hideAnswer(this)">
+        <div class="question">Question 2: What is CSS?</div>
+        <div class="answer">CSS stands for Cascading Style Sheets.</div>
+    </div>
+    <!-- Add more flashcards here -->
+    <script src="script.js"></script>
+</body>
+</html>
+
+.flashcard {
+    width: 200px;
+    height: 150px;
+    background-color: lightblue;
+    border: 1px solid #ccc;
+    margin: 10px;
+    perspective: 1000px;
+}
+
+.question, .answer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+.answer {
+    display: none;
+    transform: rotateY(180deg);
+}
+
+.flashcard:hover .question {
+    transform: rotateY(180deg);
+    display: none;
+}
+
+.flashcard:hover .answer {
+    display: block;
+}
+
+function showAnswer(card) {
+    card.querySelector('.question').style.transform = 'rotateY(180deg)';
+    card.querySelector('.answer').style.display = 'block';
+}
+
+function hideAnswer(card) {
+    card.querySelector('.question').style.transform = 'rotateY(0deg)';
+    card.querySelector('.answer').style.display = 'none';
+}
